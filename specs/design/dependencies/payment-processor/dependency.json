@@ -2,12 +2,14 @@
   "name": "payment-processor",
   "resource": {
     "name": "payment-processor",
-    "description": "Collects customer payments via mobile money and card at checkout, and pays out net proceeds to merchants."
+    "description": "Collects customer payments via mobile money and card at checkout, and pays out net proceeds to merchants.",
+    "provider": "Flutterwave",
+    "config": [
+      { "key": "FLUTTERWAVE_SECRET_KEY", "secret": true, "description": "Flutterwave secret API key, used to authenticate server-to-server calls (found in your Flutterwave dashboard under Settings > API)." },
+      { "key": "FLUTTERWAVE_PUBLIC_KEY", "description": "Flutterwave public API key, used to reference your account when generating checkout links." },
+      { "key": "FLUTTERWAVE_WEBHOOK_SECRET_HASH", "secret": true, "description": "The secret hash configured for your Flutterwave webhook, used to verify incoming webhook signatures." }
+    ],
+    "contract": { "type": "openapi", "path": "openapi.yaml", "origin": "derived" }
   },
-  "suggestions": [
-    { "name": "Flutterwave", "description": "Pan-African payments gateway covering mobile money and card across Nigeria, Kenya, Ghana and more." },
-    { "name": "Paystack", "description": "Card and mobile money processing, strong in Nigeria and Ghana." },
-    { "name": "MTN Mobile Money API", "description": "Direct integration for MTN Mobile Money collections in supported countries." },
-    { "name": "M-Pesa (Safaricom Daraja API)", "description": "Direct integration for M-Pesa mobile money collections in Kenya." }
-  ]
+  "provenance": { "sourceUrl": "https://developer.flutterwave.com/v3.0.0/llms.txt" }
 }
