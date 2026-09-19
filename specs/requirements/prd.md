@@ -41,11 +41,12 @@ A merchant payments platform that lets businesses across African countries accep
 - Payment collection is online checkout only for this release — a hosted checkout page and/or API integration; in-person collection (POS, USSD, QR) is out of scope for now.
 - The platform holds collected funds and disburses net proceeds to each merchant's linked bank account or mobile wallet on a scheduled payout run, after deducting platform fees.
 - Payment methods accepted are mobile money and card; no payment processor is registered in the organization's catalog yet, and none was named as already in use, so the specific processor(s) remain open for the design stage.
-- Transaction and payout confirmations are sent by email. *assumed*
-- Merchant onboarding requires basic KYC — business registration details and an identifying document — reviewed by a Platform Admin before the merchant is activated. *assumed*
-- The platform charges a percentage-based transaction fee, deducted before settlement. *assumed*
-- The platform supports multiple African countries and their local currencies. *assumed*
-- Customers can raise a dispute on a transaction with the platform; a Platform Admin mediates the resolution with the merchant. *assumed*
+- Transaction and payout confirmations are sent by email.
+- Merchant onboarding requires basic KYC — business registration details and an identifying document — reviewed by a Platform Admin before the merchant is activated.
+- The platform charges a flat percentage transaction fee, deducted before settlement.
+- The platform supports Nigeria (NGN), Kenya (KES) and Ghana (GHS) at launch.
+- Payouts run on a weekly schedule.
+- Customers can raise a dispute on a transaction with the platform; a Platform Admin mediates the resolution with the merchant.
 
 ## Out of Scope
 
@@ -57,8 +58,5 @@ A merchant payments platform that lets businesses across African countries accep
 
 ## Open Questions
 
-1. Which African countries and currencies must the platform support at launch?
-2. Which mobile money and card payment processors does the business already have agreements with, or must the platform integrate with?
-3. What is the platform's transaction fee percentage or fee model?
-4. What payout schedule cadence is expected (daily, weekly, or on demand)?
+1. Which mobile money and card payment processors does the business already have agreements with, or must the platform integrate with?
 
