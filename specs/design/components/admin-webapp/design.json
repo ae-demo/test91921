@@ -7,11 +7,51 @@
   "appPath": "admin-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "payments-api", "description": "Merchant review, transaction monitoring, payout runs, disputes and fee configuration." },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
   ],
   "description": "The Platform Admin console: review and approve/reject merchant onboarding, monitor transactions across all merchants, configure platform fees, trigger and track weekly payout runs, mediate disputes, and suspend merchants. Does not expose any merchant- or customer-facing functionality.",
-  "stories": [9, 10, 11, 12, 13, 14],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "payments-api",
+      "description": "Merchant review, transaction monitoring, payout runs, disputes and fee configuration.",
+      "wiring": {
+        "endpoint": {
+          "component": "test91921-payments-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "PAYMENTS_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "test91921-user-auth",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }

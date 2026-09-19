@@ -7,13 +7,94 @@
   "appPath": "payments-api",
   "entrypoint": "deployment/service",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "platform-resource", "name": "payments-db", "resourceType": "postgres-cnpg", "parameters": { "instances": 1, "storage": "1Gi", "version": "16" } },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" },
-    { "kind": "external", "name": "payment-processor", "description": "Charges customers via mobile money and card at checkout, and disburses weekly merchant payouts." },
-    { "kind": "external", "name": "email-service", "description": "Sends transaction and payout confirmation emails." }
+  "stories": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
   ],
   "description": "The single backend service for the platform: merchant onboarding and KYC review, checkout transaction processing, weekly payout runs, dispute mediation, platform fee configuration, and customer accounts/payment methods. Does not render any UI and does not talk to the payment processor's card/mobile-money networks directly beyond the processor's own API.",
-  "stories": [1, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
-  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "payments-db",
+      "resourceType": "postgres-cnpg",
+      "parameters": {
+        "instances": 1,
+        "storage": "1Gi",
+        "version": "16"
+      },
+      "wiring": {
+        "ref": "test91921-payments-db",
+        "envBindings": {
+          "dbname": "PAYMENTS_DB_DBNAME",
+          "host": "PAYMENTS_DB_HOST",
+          "password": "PAYMENTS_DB_PASSWORD",
+          "port": "PAYMENTS_DB_PORT",
+          "user": "PAYMENTS_DB_USER"
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "test91921-user-auth",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    },
+    {
+      "kind": "external",
+      "name": "payment-processor",
+      "description": "Charges customers via mobile money and card at checkout, and disburses weekly merchant payouts.",
+      "wiring": {
+        "ref": "test91921-payment-d666f7a9",
+        "envBindings": {
+          "FLUTTERWAVE_PUBLIC_KEY": "FLUTTERWAVE_PUBLIC_KEY",
+          "FLUTTERWAVE_SECRET_KEY": "FLUTTERWAVE_SECRET_KEY",
+          "FLUTTERWAVE_WEBHOOK_SECRET_HASH": "FLUTTERWAVE_WEBHOOK_SECRET_HASH"
+        }
+      }
+    },
+    {
+      "kind": "external",
+      "name": "email-service",
+      "description": "Sends transaction and payout confirmation emails.",
+      "wiring": {
+        "ref": "test91921-email-service",
+        "envBindings": {
+          "SENDGRID_API_KEY": "SENDGRID_API_KEY",
+          "SENDGRID_FROM_EMAIL": "SENDGRID_FROM_EMAIL"
+        }
+      }
+    }
+  ],
+  "exposesAPI": {
+    "auth": "end-user-required"
+  },
+  "skillsPinned": [
+    "openapi-conventions",
+    "ballerina",
+    "api-management",
+    "thunder-authentication"
+  ]
 }
