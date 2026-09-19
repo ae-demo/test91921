@@ -58,5 +58,5 @@ A merchant payments platform that lets businesses across African countries accep
 
 ## Open Questions
 
-1. Which mobile money and card payment processors does the business already have agreements with, or must the platform integrate with?
+*(none currently — settled: the business has no existing payment-processor relationship; mobile money and card processors stay capability-only and will be chosen when the design defines that dependency.)*
 
