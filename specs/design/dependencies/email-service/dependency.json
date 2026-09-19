@@ -2,11 +2,28 @@
   "name": "email-service",
   "resource": {
     "name": "email-service",
-    "description": "Sends transaction and payout confirmation emails to merchants and customers."
+    "description": "Sends transaction and payout confirmation emails to merchants and customers.",
+    "provider": "SendGrid",
+    "config": [
+      {
+        "key": "SENDGRID_API_KEY",
+        "secret": true,
+        "description": "SendGrid API key with Mail Send permission (create one in SendGrid under Settings > API Keys)."
+      },
+      {
+        "key": "SENDGRID_FROM_EMAIL",
+        "description": "The verified sender email address confirmations are sent from."
+      }
+    ],
+    "contract": {
+      "type": "openapi",
+      "path": "openapi.yaml",
+      "origin": "provider"
+    }
   },
-  "suggestions": [
-    { "name": "SendGrid", "description": "Widely used transactional email API with generous free tier." },
-    { "name": "Amazon SES", "description": "Low-cost transactional email, convenient if already on AWS." },
-    { "name": "Postmark", "description": "Transactional email focused on deliverability and simplicity." }
-  ]
+  "provenance": {
+    "sourceUrl": "https://raw.githubusercontent.com/twilio/sendgrid-oai/main/spec/json/tsg_mail_v3.json",
+    "sha256": "6f17eb4d4dd458db133ee3deb6f0fbcdf8aca8d1d9ba9960349fafb32467a7c6",
+    "readOn": "2026-09-19T10:46:11Z"
+  }
 }
