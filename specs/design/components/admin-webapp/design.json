@@ -1,0 +1,17 @@
+{
+  "name": "admin-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "admin-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "component", "name": "payments-api", "description": "Merchant review, transaction monitoring, payout runs, disputes and fee configuration." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "The Platform Admin console: review and approve/reject merchant onboarding, monitor transactions across all merchants, configure platform fees, trigger and track weekly payout runs, mediate disputes, and suspend merchants. Does not expose any merchant- or customer-facing functionality.",
+  "stories": [9, 10, 11, 12, 13, 14],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}

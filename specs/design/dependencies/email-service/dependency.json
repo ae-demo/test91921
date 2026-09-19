@@ -1,0 +1,12 @@
+{
+  "name": "email-service",
+  "resource": {
+    "name": "email-service",
+    "description": "Sends transaction and payout confirmation emails to merchants and customers."
+  },
+  "suggestions": [
+    { "name": "SendGrid", "description": "Widely used transactional email API with generous free tier." },
+    { "name": "Amazon SES", "description": "Low-cost transactional email, convenient if already on AWS." },
+    { "name": "Postmark", "description": "Transactional email focused on deliverability and simplicity." }
+  ]
+}

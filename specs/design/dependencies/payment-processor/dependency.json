@@ -1,0 +1,13 @@
+{
+  "name": "payment-processor",
+  "resource": {
+    "name": "payment-processor",
+    "description": "Collects customer payments via mobile money and card at checkout, and pays out net proceeds to merchants."
+  },
+  "suggestions": [
+    { "name": "Flutterwave", "description": "Pan-African payments gateway covering mobile money and card across Nigeria, Kenya, Ghana and more." },
+    { "name": "Paystack", "description": "Card and mobile money processing, strong in Nigeria and Ghana." },
+    { "name": "MTN Mobile Money API", "description": "Direct integration for MTN Mobile Money collections in supported countries." },
+    { "name": "M-Pesa (Safaricom Daraja API)", "description": "Direct integration for M-Pesa mobile money collections in Kenya." }
+  ]
+}

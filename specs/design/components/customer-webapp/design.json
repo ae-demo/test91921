@@ -1,0 +1,17 @@
+{
+  "name": "customer-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "customer-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "component", "name": "payments-api", "description": "Checkout, saved payment methods, payment history and disputes." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "The Customer-facing hosted checkout and account area: pay a merchant by mobile money or card, optionally create an account to save payment methods, view a receipt, review payment history, and raise disputes. Does not expose any merchant or admin functionality; checkout itself works without signing in.",
+  "stories": [15, 16, 17, 18],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}
